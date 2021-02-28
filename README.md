@@ -66,6 +66,12 @@ For a top quality VTX you can get away with values about 25/7/7.
 
 `R1 R8 F4 F8 B2 A3`
 
+**6 pilots 37/16/14**
+
+`R1, R2, R4, R8, B6, A1`
+
+`R1, R2, R8, B3, B6, A1`
+
 **5 pilots 30/17/26**
 
 `R1 R2 R8 F5 B3`
