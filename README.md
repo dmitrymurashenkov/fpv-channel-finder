@@ -68,7 +68,7 @@ legal frequency range 5651Mhz - 5924Mhz.
 
 **8 pilots 25/11/11** 
 
-`5658 5683 5738 5764 5805 5831 5885 5910`
+`5658 5683 5738 5765 5805 5831 5885 5911`
 
 Most VTX support setting custom frequency - in Betaflight VTX tab you need to add a band and uncheck Factory checkbox.
 When it's set to FACTORY - flight controller send band and channel index to VTX and expects VTX to have preconfigured 
@@ -84,20 +84,23 @@ You also need to set this band to receiver in your googles. Not all receivers su
 
 *ImmersionRC RapidFire* - Favourites band can be set to arbitrary frequencies
 
-*TBS Fusion* - manual says that custom frequency can be set for any Favourite channel, but under firware 1.4 the menu
+*TBS Fusion* - manual says that custom frequency can be set for any Favourite channel, but under firware 1.04 the menu
 looks different and doesn't have such option (perhaps we were doing something wrong).
 
 Closest standard channels:
 ```
 5658 - R1 (5658) +0Mhz
-5683 - E2 (5685) +2Mhz
-5738 - F1 (5750) +2Mhz
-5764 - A6 (5765) +1Mhz
+5683 - E2 (5685) -2Mhz
+5738 - F1 (5740) -2Mhz
+5765 - A6 (5765) +0Mhz
 5805 - A4 (5805) +0Mhz
-5831 - B6 (5828) -3Mhz
+5831 - B6 (5828) +3Mhz
 5885 - E5 (5885) +0Mhz
-5910 - E6 (5905) -5Mhz
+5911 - E6 (5905) +6Mhz
 ```
+
+Alternatively we can use channel 8 at 5910Mhz to still fulfil separation requirements, but have it closer to standard 
+channel.
 
 ### Best channel sets - no locked channels (E4 E7 E8)
 
