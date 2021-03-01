@@ -82,10 +82,12 @@ procedures.
 
 You also need to set this band to receiver in your googles. Not all receivers support custom frequencies:
 
-*ImmersionRC RapidFire* - Favourites band can be set to arbitrary frequencies
+*ImmersionRC RapidFire* - Favourites band can be set to arbitrary frequencies.
 
-*TBS Fusion* - manual says that custom frequency can be set for any Favourite channel, but under firware 1.04 the menu
-looks different and doesn't have such option (perhaps we were doing something wrong).
+*TBS Fusion* - manual says that custom frequency can be set for any Favourite channel, but under firmware 1.04 the menu
+looks different and doesn't have such option (perhaps we were doing something wrong). 
+
+Some other receivers can be configured also, but we only list tested ones here.
 
 Closest standard channels:
 ```
