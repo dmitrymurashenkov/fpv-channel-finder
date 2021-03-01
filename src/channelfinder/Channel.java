@@ -17,7 +17,8 @@ public enum Channel {
     F5(5820),
     F6(5840),
     F7(5860),
-    F8(5880),
+// Same frequency as R7
+//    F8(5880),
 
     E1(5705),
     E2(5685),

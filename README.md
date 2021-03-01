@@ -50,7 +50,16 @@ For whoop-style 25mW VTX in confined space separation should be at least:
 
 But better to have 25/15/15 (channel, harmonic, IMD) separation.
 
-For a top quality VTX you can get away with values about 25/7/7.
+For a top quality VTX and positioning pilots far from the track you can get away with values as low as 25/7/7 - this is 
+minimum separation required for the main signal on channel frequency to be stronger than the sum of all noise on this 
+frequency.
+
+NOTE! Since F8 and R7 have same frequency - we always use R7 if this frequency match.
+
+NOTE! Although all channels in the set satisfy minimum separation parameters there still are better and worse channels 
+in every set - some channels are a bit further from IMD, harmonics and other channels than others. Our tests with 
+indoor tinywhoop races show that with 6 pilots at 25/12/18 and 25/10/12 all channels give about the same quality - more 
+depends on other pilot's VTX's quality than channel choice from the set.
 
 ### Best channel sets - no locked channels (E4 E7 E8)
 
@@ -58,13 +67,9 @@ For a top quality VTX you can get away with values about 25/7/7.
 
 `R7 R8 F2 F4 E1 E3 B6`
 
-`R8 F2 F4 F8 E1 E3 B6`
-
 **6 pilots 25/17/17**
 
 `R1 R7 R8 F4 B2 A3`
-
-`R1 R8 F4 F8 B2 A3`
 
 **6 pilots 37/16/14**
 
@@ -82,8 +87,6 @@ For a top quality VTX you can get away with values about 25/7/7.
 
 `R7 R8 F2 F4 E1 E3 B6`
 
-`R8 F2 F4 F8 E1 E3 B6`
-
 **6 pilots 25/19/19**
 
 `R2 F7 E6 E4 B4 A6`
@@ -99,8 +102,6 @@ For a top quality VTX you can get away with values about 25/7/7.
 
 These are for the case when there is some other signal source (for example, wifi) occupying one of the channels used 
 in the best sets.
-
-Note that same frequency can be known under several channel names - so avoid close channels also!
 
 ![](frequency-bands.png)
 
@@ -122,14 +123,6 @@ Note that same frequency can be known under several channel names - so avoid clo
 
 `R1 R8 F1 F3 E5 A4`
 
-`R1 R8 F3 F5 F8 E1`
-
-`R1 R8 F4 F8 E1 B6`
-
-`R1 R8 F4 F8 E1 A3`
-
-`R1 R8 F4 F8 B2 A3`
-
 `R1 R8 F4 E1 B3 B8`
 
 `R2 R8 F1 F5 F7 A6`
@@ -137,8 +130,6 @@ Note that same frequency can be known under several channel names - so avoid clo
 `R2 F2 F6 E6 B4 A1`
 
 `R7 F2 F6 E1 E3 A5`
-
-`F2 F6 F8 E1 E3 A5`
 
 **6 pilots 25/10/12**
 
@@ -181,10 +172,6 @@ Note that same frequency can be known under several channel names - so avoid clo
 
 `R1 R3 R7 E1 A5 A3`
 
-`R1 R3 F5 F8 E1 A5`
-
-`R1 R3 F8 E1 A5 A3`
-
 `R1 R4 R8 F4 E1 B8`
 
 `R1 R4 R8 F4 E1 A1`
@@ -207,19 +194,9 @@ Note that same frequency can be known under several channel names - so avoid clo
 
 `R1 R8 F1 E5 A6 A4`
 
-`R1 R8 F3 F5 F8 E1`
-
 `R1 R8 F3 F7 B2 B6`
 
 `R1 R8 F3 E5 B2 A3`
-
-`R1 R8 F4 F8 E1 B6`
-
-`R1 R8 F4 F8 E1 A3`
-
-`R1 R8 F4 F8 B2 B6`
-
-`R1 R8 F4 F8 B2 A3`
 
 `R1 R8 F4 E1 B3 B8`
 
@@ -247,11 +224,7 @@ Note that same frequency can be known under several channel names - so avoid clo
 
 `R3 R7 E1 E3 A5 A3`
 
-`R3 F5 F8 E1 E3 A5`
-
 `R3 F7 E2 E6 B6 A6`
-
-`R3 F8 E1 E3 A5 A3`
 
 `R7 R8 F2 F4 E1 E3`
 
@@ -271,29 +244,14 @@ Note that same frequency can be known under several channel names - so avoid clo
 
 `R8 F1 F3 F6 E3 B8`
 
-`R8 F2 F4 F8 E1 E3`
-
-`R8 F2 F8 E1 E3 B6`
-
-`R8 F3 F5 F8 E1 E3`
-
 `R8 F3 F6 E3 B8 A7`
 
 `R8 F4 F6 E1 E3 B8`
 
-`R8 F4 F8 E1 E3 B6`
-
-`R8 F4 F8 E1 E3 A6`
-
-`R8 F4 F8 E1 E3 A3`
-
-`R8 F4 F8 E3 B2 A3`
-
 `R8 F4 E3 E5 B2 A3`
 
-`F2 F6 F8 E1 E3 A5`
-
 `F7 E2 E6 B1 B6 A6`
+
 
 
 **5 pilots 25/15/20**
@@ -311,15 +269,9 @@ Note that same frequency can be known under several channel names - so avoid clo
 
 `R1 R7 R8 B2 A4`
 
-`R1 R8 F4 F8 B2`
-
-`R1 R8 F4 F8 A7`
-
 `R1 R8 F4 E1 B6`
 
 `R1 R8 F4 E1 A3`
-
-`R1 R8 F8 B2 A4`
 
 `R2 R8 F5 B3 A7`
 
@@ -338,3 +290,4 @@ Note that same frequency can be known under several channel names - so avoid clo
 `R5 F6 E2 E6 B1`
 
 `R5 E2 E6 B1 A2`
+
