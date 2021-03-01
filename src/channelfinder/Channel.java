@@ -46,7 +46,22 @@ public enum Channel {
     A4(5805),
     A3(5825),
     A2(5845),
-    A1(5865)
+    A1(5865),
+
+    /*
+        OCTABAND 5658 5683 5738 5764 5805 5831 5885 5910
+
+        Custom channels from legal frequency range selected for the best separation - see FindBestFrequencies class
+        Parameters 25/11/11 and range R1-R8 (5658-5917), using whole legal range (5651-5924) gives same solution
+     */
+//    OCTABAND_1(5658),
+//    OCTABAND_2(5658 + 25),
+//    OCTABAND_3(5658 + 80),
+//    OCTABAND_4(5658 + 106),
+//    OCTABAND_5(5658 + 147),
+//    OCTABAND_6(5658 + 173),
+//    OCTABAND_7(5658 + 227),
+//    OCTABAND_8(5658 + 252)
     ;
 
     private int mhz;
