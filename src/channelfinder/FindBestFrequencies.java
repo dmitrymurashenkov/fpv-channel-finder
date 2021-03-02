@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class FindBestFrequencies {
 
     private static int HZ_TARGET_COUNT = 8;
-    private static int REQS_1 = 25;
+    private static int REQS_1 = 26;
     private static int REQS_2 = 11;
     private static int REQS_3 = 12;
     private static int IN_ONE_ROW = 30;
@@ -61,7 +61,7 @@ public class FindBestFrequencies {
             //delete1
             {
                 int d1 = addingHzBaseIdx;
-                while (d1 <= addingHzBaseIdx + REQS_1 && d1 < base.length) {
+                while (d1 < addingHzBaseIdx + REQS_1 && d1 < base.length) {
                     if (base[d1] == 0) {
                         base[d1] = 1;
                         returnToZeros.add(d1);
