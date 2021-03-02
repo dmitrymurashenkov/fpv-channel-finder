@@ -9,6 +9,8 @@ import java.util.ArrayList;
  * of your choice. For example 5650Mhz - start of legal band.
  *
  * Works recursively by choosing first channel and marking all of the prohibited frequencies in the array.
+ *
+ * @author Sergey Kulakov (@klsrg)
  */
 public class FindBestFrequencies {
 

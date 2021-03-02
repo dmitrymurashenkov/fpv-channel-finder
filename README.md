@@ -104,6 +104,8 @@ Closest standard channels:
 Alternatively we can use channel 8 at 5910Mhz to still fulfil separation requirements, but have it closer to standard 
 channel.
 
+Frequency set found using algorithm by Sergey Kulakov (@klsrg).
+
 ### Best channel sets - no locked channels (E4 E7 E8)
 
 **7 pilots 26/11/11**
