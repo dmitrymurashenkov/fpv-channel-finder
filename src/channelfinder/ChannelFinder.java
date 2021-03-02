@@ -13,9 +13,9 @@ public class ChannelFinder {
 
     public static void main(String[] args) {
         int pilots = 8;
-        int minGapBetweenChannelsMhz = 25;
+        int minGapBetweenChannelsMhz = 26;
         int minGapBetweenChannelAndHarmonicMhz = 11;
-        int minGapBetweenChannelAndImdPeakMhz = 11;
+        int minGapBetweenChannelAndImdPeakMhz = 12;
 
         List<List<Channel>> goodChannelSets = findChannels(
                 pilots,
