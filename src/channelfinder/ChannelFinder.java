@@ -12,10 +12,10 @@ import java.util.stream.Stream;
 public class ChannelFinder {
 
     public static void main(String[] args) {
-        int pilots = 8;
-        int minGapBetweenChannelsMhz = 26;
-        int minGapBetweenChannelAndHarmonicMhz = 11;
-        int minGapBetweenChannelAndImdPeakMhz = 12;
+        int pilots = 6;
+        int minGapBetweenChannelsMhz = 37;
+        int minGapBetweenChannelAndHarmonicMhz = 16;
+        int minGapBetweenChannelAndImdPeakMhz = 14;
 
         List<List<Channel>> goodChannelSets = findChannels(
                 pilots,
