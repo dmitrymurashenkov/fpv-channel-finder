@@ -48,7 +48,7 @@ For whoop-style 25mW VTX in confined space separation should be at least:
 - 10Mhz between channel and any harmonic peak 
 - 10Mhz between channel and any IMD peak
 
-Sinc IMD and harmonics have far less energy than main channel frequency, so separation gap may be lower for IMD
+Since IMD and harmonics have far less energy than main channel frequency, so separation gap may be lower for IMD
 and harmonics.
 
 But better to have 25/15/15 (channel, harmonic, IMD) separation.
@@ -69,6 +69,13 @@ main channel frequencies.
 
 Frequency set found using algorithm by [Sergey Kulakov (@klsrg)](https://github.com/klsrg).
 
+NOTE! Lot of times there is some 5G wifi router nearby - once it starts transmitting data (somebody downloads video 
+to phone or something) it may SEVERELY affect FPV analog video (horizontal noise lines usually) - this depends on
+what wifi channels router uses. Most routers allow setting channel via admin UI - channels are numbered 1 to 196 and 
+from 120 an up they intersect with FPV frequency range. Better set lowest possible channel. To verify that it worked
+or simply check if there are any wifi transmitters nearby - download some wifi analyzer app to your phone (there are
+numerous in app store and play market).
+
 ### Best channel sets - no locked channels (E4 E7 E8)
 
 **7 pilots 26/11/11**
@@ -77,9 +84,9 @@ Frequency set found using algorithm by [Sergey Kulakov (@klsrg)](https://github.
 
 **6 pilots 37/16/14**
 
-`R1, R2, R4, R8, B6, A1`
+`R1 R2 R4 R8 B6 A1`
 
-`R1, R2, R8, B3, B6, A1`
+`R1 R2 R8 B3 B6 A1`
 
 **6 pilots 35/11/16**
 
@@ -112,6 +119,27 @@ Frequency set found using algorithm by [Sergey Kulakov (@klsrg)](https://github.
 **5 pilots 46/17/27**
 
 `R1 F5 E8 B8 A8`
+
+### Does it really work? And more tips!
+
+We've used 6-pilot set `R1 R2 R4 R8 B6 A1` on many endurance tinywhoop races - results wildly depend on vtx quality.
+If all vtx have about the same power - video on all channels is clean with little noise, but if there is one badly 
+calibrated/damaged vtx with high output power - neighbor channels can be affected severely.
+
+We've also tested 7-pilot set `R7 R8 F2 F4 E1 E3 B6` briefly during training sessions - no difference from 6-pilot
+set with good quality vtx.
+
+If you have problems and have some tool to measure vtx power (ImmersionRC RFMeter for example) - try to use it. We've
+seen some whoop vtx output about 400-600mW when specs said it could only output 25mW! Also on some whoops like Moblite
+with Happymodel Diamond FC the 25mW mode outputs about 5mW and 100mW outputs about 25mw, so if particular pilot has
+bad video but everybody else are good - try increasing power on the problematic whoop, it may help without affecting 
+others.
+
+Also positioning pilots as far from the tracks is possible is IMPORTANT - min/max signal level difference from all 
+drones should be low, otherwise vtx on other channels will affect nearby channels severely. Another tip is to remove
+antennas from receiver on goggles - receivers are too sensitive and with a good antenna they capture too much signal
+from other channels which results in video noise. Although receiver usually gets hot - it is safe to remove antennas
+because it doesn't transmit anything and won't burn out.
 
 ### Frequency chart 
 
