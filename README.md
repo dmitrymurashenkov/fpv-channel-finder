@@ -96,6 +96,12 @@ numerous in app store and play market).
 
 `R1 R7 R8 F4 B2 A3`
 
+**5 pilots 38/19/18**
+
+`R2, F7, E6, B2, B4`
+
+`R2, E6, B2, B4, A1`
+
 **5 pilots 30/17/26**
 
 `R1 R2 R8 F5 B3`
