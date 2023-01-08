@@ -106,6 +106,15 @@ numerous in app store and play market).
 
 `R1 R2 R8 F5 B3`
 
+**4 pilots using only Raceband 37/41/36**
+
+`R1, R2, R4, R5`
+
+**4 pilots using only Raceband 40/34/34**
+
+`R7, F6, A8, A6`
+
+
 ### Best channel sets - including locked channels (E4 E7 E8)
 
 **7 pilots 26/11/11**
