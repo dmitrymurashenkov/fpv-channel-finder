@@ -9,16 +9,24 @@ import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+import static channelfinder.Channel.*;
+
 public class ChannelFinder {
 
     public static void main(String[] args) {
-        int pilots = 4;
-        int minGapBetweenChannelsMhz = 30;
-        int minGapBetweenChannelAndHarmonicMhz = 25;
-        int minGapBetweenChannelAndImdPeakMhz = 25;
+        int pilots = 6;
+        int digitalPilots = 2;
+        int minGapBetweenChannelsMhz = 35;
+        int minGapBetweenChannelAndHarmonicMhz = 15;
+        int minGapBetweenChannelAndImdPeakMhz = 15;
+
+//        35/15/15 2digital
+//[R2, R4, E6, B1, B5, B8]
+//[R2, R4, E6, B1, B5, A1]
 
         List<List<Channel>> goodChannelSets = findChannels(
                 pilots,
+                digitalPilots,
                 minGapBetweenChannelsMhz,
                 minGapBetweenChannelAndHarmonicMhz,
                 minGapBetweenChannelAndImdPeakMhz);
@@ -43,13 +51,14 @@ public class ChannelFinder {
      */
     public static List<List<Channel>> findChannels(
             int pilots,
+            int digitalPilots,
             int channelGap,
             int harmonicsGap,
             int imdGap) {
         //Which channel each pilot uses - specified as index from Channel.values()
         int[] pilotsChannels = new int[pilots];
-        ChannelCheck check = new ChannelCheck(channelGap, imdGap, harmonicsGap);
-        appendChannel(0, 0, pilotsChannels, check);
+        ChannelCheck check = new ChannelCheck(channelGap, imdGap, harmonicsGap, digitalPilots);
+        appendChannel(0, digitalPilots, 0, pilotsChannels, check);
 
         return check.goodSets;
     }
@@ -58,11 +67,15 @@ public class ChannelFinder {
      * Recursively builds channel set appending channel for pilot with specified index. After channel set is
      * fully built - checks it for separation.
      */
-    private static void appendChannel(int pilot, int minChannel, int[] pilotsChannels, ChannelCheck channelCheck) {
+    private static void appendChannel(int pilot, int digitalPilots, int minChannel, int[] pilotsChannels, ChannelCheck channelCheck) {
         for (int channel = minChannel; channel < Channel.values().length; channel++) {
+            if (pilot < digitalPilots && !Arrays.asList(R1, R2, R3, R4, R5, R6, R7, R8).contains(Channel.values()[channel])) {
+                //Digital vtx can only use R band
+                continue;
+            }
             pilotsChannels[pilot] = channel;
             if (pilot < pilotsChannels.length - 1) {
-                appendChannel(pilot + 1, channel + 1, pilotsChannels, channelCheck);
+                appendChannel(pilot + 1, digitalPilots, channel + 1, pilotsChannels, channelCheck);
             }
             else {
                 channelCheck.isEnoughSeparation(pilotsChannels);
@@ -74,15 +87,17 @@ public class ChannelFinder {
         private final int channelGap;
         private final int imdGap;
         private final int harmonicsGap;
+        private final int digitalPilots;
 
         private long counter = 0;
 
         List<List<Channel>> goodSets = new ArrayList<>();
 
-        public ChannelCheck(int channelGap, int IMDgap, int harmonicsGap) {
+        public ChannelCheck(int channelGap, int IMDgap, int harmonicsGap, int digitalPilots) {
             this.channelGap = channelGap;
             this.imdGap = IMDgap;
             this.harmonicsGap = harmonicsGap;
+            this.digitalPilots = digitalPilots;
         }
 
         private BigInteger factorial(int n) {
@@ -109,6 +124,11 @@ public class ChannelFinder {
             Channel[] channels = channelSet.toArray(new Channel[channelSet.size()]);
             for (int i = 0; i < channels.length - 1; i++) {
                 for (int j = i + 1; j < channels.length; j++) {
+                    if (i < digitalPilots) {
+                        //Digital vtx doesn't cause analog IMD problems, so we can skip it
+                        continue;
+                    }
+
                     Channel c1 = channels[i];
                     Channel c2 = channels[j];
                     int imd1 = c1.getMhz()*2 - c2.getMhz();
@@ -118,6 +138,7 @@ public class ChannelFinder {
                 }
             }
 
+            //todo it's not clear if digital vtx causes harmonics, but we assume - it does
             intevals.addAll(
                     channelSet.stream().map(
                     channel -> new IntervalMhz(
